@@ -1,5 +1,5 @@
 import java.util.*;
-public class Main {
+public class Get_Report_Results {
     public static void main(String[] args) {
         class Solution {
             public int[] solution(String[] id_list, String[] report, int k) {
