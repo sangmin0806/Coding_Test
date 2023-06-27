@@ -1,5 +1,7 @@
-import java.util.*;
-class Solution {
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class Search_Prime {
     HashSet<Integer> numbersSet = new HashSet<>();
     public boolean isPrime(int num){
         if(num==0||num==1)
@@ -33,7 +35,7 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        Solution sol = new Solution();
+        Search_Prime sol = new Search_Prime();
         System.out.println(sol.solution("117"));
     }
 }
