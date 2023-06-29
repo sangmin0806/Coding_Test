@@ -1,3 +1,4 @@
+
 public class Fatigue {
     static boolean[] visited;
     static int count = 0;
