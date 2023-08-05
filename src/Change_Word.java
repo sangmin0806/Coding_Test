@@ -22,10 +22,15 @@ public class Change_Word {
         int targetcount = 0;
         for(int j = 0; j<begin.length(); j++){
             if(begin.charAt(j)==target.charAt(j)){
+
                 targetcount++;
+
+
             }
         }
+        System.out.println(begin+" "+targetcount+" "+first);
         if(targetcount == (begin.length()-1)&&first){
+
             answer++;
             first = false;
             result = answer;
@@ -45,6 +50,7 @@ public class Change_Word {
                 begin = words[i];
                 visited[i] = true;
                 answer++;
+
                 dfs(begin,target,words);
             }
 
@@ -54,8 +60,8 @@ public class Change_Word {
         Change_Word sol = new Change_Word();
         String begin = "hit";
         String target = "cog";
-        String[] words = {"hot", "dot", "dog", "lot", "log", "cog"};
-        int result = sol.solution(begin,target,words);
-        System.out.println(result);
+        String[] words = {"hat","hot","dat","dot","cat","dog","cot","cog"};
+        int k = sol.solution(begin,target,words);
+        System.out.println(k);
     }
 }
