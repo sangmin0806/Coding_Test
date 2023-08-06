@@ -1,59 +1,42 @@
 public class Change_Word {
     static boolean[] visited;
     static int answer = 0;
-    static int result = 0;
-    static boolean first = true;
-
+    static int min = Integer.MAX_VALUE;
     public int solution(String begin, String target, String[] words) {
-        visited = new boolean[words.length];
-        boolean have = false;
-        for(int i = 0; i<words.length; i++){
+        int have = 0;
+        for(int i =0; i<words.length; i++){
             if(words[i].equals(target)){
-                have = true;
+                have++;
             }
         }
-        if(!have)
-            return result;
-        dfs(begin,target,words);
-        return result;
+        if(have ==0)
+            return answer;
+        else{
+            visited = new boolean[words.length];
+            dfs(begin,target,words,0);
+            return answer;
+        }
 
     }
-    public void dfs(String begin, String target, String[] words){
-        int targetcount = 0;
-        for(int j = 0; j<begin.length(); j++){
-            if(begin.charAt(j)==target.charAt(j)){
+    public void dfs(String begin, String target, String[] words,int cnt){
 
-                targetcount++;
-
-
-            }
-        }
-        System.out.println(begin+" "+targetcount+" "+first);
-        if(targetcount == (begin.length()-1)&&first){
-
-            answer++;
-            first = false;
-            result = answer;
+        if(begin.equals(target)){
+            min = Math.min(min,cnt);
+            answer = min;
             return;
         }
-
         for(int i = 0; i<words.length; i++){
-            if(visited[i])
-                continue;
-            int count = 0;
-            for(int j = 0; j<begin.length(); j++){
+            int count =0;
+            for(int j =0; j<begin.length(); j++){
                 if(begin.charAt(j)==words[i].charAt(j)){
                     count++;
                 }
             }
-            if(count == (begin.length()-1)){
-                begin = words[i];
+            if(count==begin.length()-1&& !visited[i]){
                 visited[i] = true;
-                answer++;
-
-                dfs(begin,target,words);
+                dfs(words[i],target,words,cnt+1);
+                visited[i] = false;
             }
-
         }
     }
     public static void main(String[] args){
