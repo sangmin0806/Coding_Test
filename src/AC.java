@@ -10,7 +10,6 @@ public class AC {
     static Deque<Integer> x = new LinkedList<>();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         StringTokenizer st = new StringTokenizer(br.readLine());
         int T = Integer.parseInt(st.nextToken());
         for (int k = 0; k < T; k++) {
