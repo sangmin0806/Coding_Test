@@ -43,6 +43,6 @@ public class Flip_Word_2 {
             }
 
         }
-        System.out.println(sb);
+        System.out.print(sb);
     }
 }
