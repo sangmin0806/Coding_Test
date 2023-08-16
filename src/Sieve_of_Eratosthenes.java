@@ -16,16 +16,14 @@ public class Sieve_of_Eratosthenes {
         int cnt = 0;
         for(int i = 2; i<=N; i++){
             int count = 0;
-            if(i == 2){
-                count = 1;
-            }
+
             for(int j = 2; j<i; j++){
-                if(i/j!=0){
+                if(i/j==0){
                     count++;
                     break;
                 }
             }
-            if(count==1){
+            if(count==0){
                 for(int k = 1; i*k <= N;k++){
                     if(list[i*k]!=0){
                         cnt++;
