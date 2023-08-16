@@ -4,8 +4,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Candy_Game {
-    static int[] dr = {0,1,0,-1};
-    static int[] dc = {1,0,-1,0};
     static int N;
     static int max = 0;
 
