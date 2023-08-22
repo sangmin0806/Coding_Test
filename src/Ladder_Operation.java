@@ -32,12 +32,6 @@ public class Ladder_Operation {
     public static void dfs(int row, int col, int count, int size){
         if(count == size){
             if(check()){
-//                for (int i = 1; i < H+1; i++) {
-//                    for (int j = 1; j < N+1; j++) {
-//                        System.out.print(map[i][j]+" ");
-//                    }
-//                    System.out.println();
-//                }
                 System.out.println(count);
 
                 System.exit(0);
