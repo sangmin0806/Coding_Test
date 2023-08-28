@@ -26,13 +26,13 @@ public class Number_Rectangle {
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                dfs(i,j);
+                search(i,j);
                 max = Math.max(max,answer);
             }
         }
         System.out.println(max);
     }
-    public static void dfs(int row, int col){
+    public static void search(int row, int col){
         List<Integer> list = new ArrayList<>();
         for (int i = 0; col+i < M; i++) {
             if(map[row][col+i]==map[row][col]){
