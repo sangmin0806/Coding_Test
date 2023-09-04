@@ -13,23 +13,19 @@ public class Search_Fraction {
         for (int i = 2; i <= X; i++) {
             if(up){
                 if(row==1) {
-
                     col++;
                     up = false;
                     continue;
                 }
-
                 row--;
                 col++;
             }
             else if(!up){
                 if(col==1){
-
                     row++;
                     up = true;
                     continue;
                 }
-
                 row++;
                 col--;
             }
