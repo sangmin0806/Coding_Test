@@ -52,7 +52,6 @@ public class Avoid_Garbage {
                 dfs(nrow,ncol);
             }
         }
-
         answer = Math.max(answer,count);
     }
 }
