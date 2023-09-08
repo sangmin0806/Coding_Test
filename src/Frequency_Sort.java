@@ -9,12 +9,10 @@ public class Frequency_Sort {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
         int C = Integer.parseInt(st.nextToken());
-        List<Integer> list = new ArrayList<>();
         HashMap<Integer,Integer> map = new LinkedHashMap<>();
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             int arr = Integer.parseInt(st.nextToken());
-            list.add(arr) ;
             map.put(arr,map.getOrDefault(arr,0)+1);
         }
         ArrayList<Integer> keylist = new ArrayList<>(map.keySet());
