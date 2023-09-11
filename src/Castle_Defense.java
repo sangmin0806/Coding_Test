@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Cattle_Defense {
+public class Castle_Defense {
     static int N,M,D;
     static int[][] map;
     static boolean[][] visited;
