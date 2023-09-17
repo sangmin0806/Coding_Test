@@ -17,17 +17,16 @@ public class Yosepus {
         for (int i = 0; i < N; i++) {
             list.add(i+1);
         }
-        int num = 0;
+        int index = -1;
         while (!list.isEmpty()){
-            num += K-1;
-            num = num%list.size();
+            index = (index+K)%list.size();
             if(list.size()==1) {
-                sb.append(list.get(num)).append(">");
+                sb.append(list.get(index)).append(">");
                 break;
             }
-            sb.append(list.get(num)).append(", ");
-            list.remove(list.get(num));
-
+            sb.append(list.get(index)).append(", ");
+            list.remove(list.get(index));
+            index -=1;
         }
         System.out.println(sb);
     }
