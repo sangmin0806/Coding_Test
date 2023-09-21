@@ -22,7 +22,7 @@ public class Shark_School {
         for (int i = 0; i < N*N; i++) {
             st = new StringTokenizer(br.readLine());
             studentLike[i][0] = Integer.parseInt(st.nextToken());//학생의 번호
-            studentLike[i][1] = Integer.parseInt(st.nextToken());
+            studentLike[i][1] = Integer.parseInt(st.nextToken());//좋아하는 학생의 번호
             studentLike[i][2] = Integer.parseInt(st.nextToken());
             studentLike[i][3] = Integer.parseInt(st.nextToken());
             studentLike[i][4] = Integer.parseInt(st.nextToken());
@@ -30,11 +30,11 @@ public class Shark_School {
 
         for (int i = 0; i < N*N; i++) {
             List<int[]> list = new ArrayList<>();
-            MapSearch(i,list);
+            MapSearch(i,list);//자리 하나씩 탐색
         }
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                satisfaction(i,j);
+                satisfaction(i,j);//만족도 탐색
             }
         }
 
@@ -43,25 +43,25 @@ public class Shark_School {
     public static void satisfaction(int row,int col){
         int num = 0;
         for (int i = 0; i < N * N; i++) {
-            if(map[row][col]==studentLike[i][0]){
+            if(map[row][col]==studentLike[i][0]){// 해당 자리에 앉은 학생이 studentLike에 몇번째 배열 학생인지 num에 담는다.
                 num = i;
                 break;
             }
         }
         int count = 0;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {// 상하좌우 탐색
             int nrow = row+dr[i];
             int ncol = col+dc[i];
             if(nrow<0||ncol<0||nrow>=N||ncol>=N)
                 continue;
-            for (int k = 1; k < 5; k++) {
+            for (int k = 1; k < 5; k++) {// studentLike배열을 탐색하며 좋아하는 학생인지 탐색
                 if(map[nrow][ncol]==studentLike[num][k]){
                     count++;
                 }
 
             }
         }
-        if(count==1){
+        if(count==1){//만족도 환산
             answer+=1;
         }else if(count==2){
             answer+=10;
@@ -71,20 +71,23 @@ public class Shark_School {
             answer+=1000;
         }
     }
-    public static void MapSearch(int seq,List<int[]> list){
+    /**
+     * seq: 몇번째 학생인지
+     */
+    public static void MapSearch(int seq,List<int[]> list){//자리 하나씩 탐색
         int max = Integer.MIN_VALUE;
         int[][] likeCount = new int[N][N];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                if(map[i][j]!=0)
+                if(map[i][j]!=0)// 자리에 누가 앉아있다면 해당자리는 탐색하지 않음
                     continue;
-                likeCount[i][j] = LikeSearch(seq,i,j);
+                likeCount[i][j] = LikeSearch(seq,i,j);// 현재 좌표에서, 좋아하는 학생수가 몇명 인접해있는지 탐색
                 max = Math.max(max,likeCount[i][j]);
             }
         }
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                if(max==likeCount[i][j]&&map[i][j]==0){
+                if(max==likeCount[i][j]&&map[i][j]==0){// 인접한 좋아하는 학생수가 최대이면서, 그자리에 앉을 수 있는지
                     list.add(new int[]{i,j});
                 }
             }
@@ -94,11 +97,11 @@ public class Shark_School {
         max = Integer.MIN_VALUE;
         int[] emptyCount = new int[len];
         for (int i = 0; i < len; i++) {
-            emptyCount[i] = emptySearch(i,list);
+            emptyCount[i] = emptySearch(i,list); // 1번조건 만족하는 자리중에서 인접한 빈칸 수가 몇개인지
             max = Math.max(max,emptyCount[i]);
         }
         for (int i = 0; i < len; i++) {
-            if(max==emptyCount[i]){
+            if(max==emptyCount[i]){ //인접한 빈칸수가 최대인 경우 해당 자리에 학생이 앉는다.
                 int row = list.get(i)[0];
                 int col = list.get(i)[1];
                 map[row][col] = studentLike[seq][0];
@@ -106,7 +109,7 @@ public class Shark_School {
             }
         }
     }
-    public static int emptySearch(int index,List<int[]> list){
+    public static int emptySearch(int index,List<int[]> list){// 인접한 빈칸 찾는 함수
         int row = list.get(index)[0];
         int col = list.get(index)[1];
         int count=0;
@@ -121,7 +124,7 @@ public class Shark_School {
         }
         return count;
     }
-    public static int LikeSearch(int seq,int row, int col){
+    public static int LikeSearch(int seq,int row, int col){ // 좋아하는 학생이 몇명 인접해있는지 찾는 함수
 
         int count=0;
         for (int i = 0; i < 4; i++) {
