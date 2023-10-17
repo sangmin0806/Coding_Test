@@ -1,10 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 
 public class Main {
@@ -12,16 +9,12 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         List<String> strings = new ArrayList<>();
-        int delcount = 0;
+        Set<String> seenStrings = new HashSet<>(); // 중복을 검사하기 위한 HashSet
         for (int i = 0; i < N; i++) {
             String str = br.readLine();
-            strings.add(str);
-            for (int j = 0; j < i-delcount; j++) {
-                if(str.equals(strings.get(j))){
-                    strings.remove(j);
-                    delcount++;
-                    break;
-                }
+            if (!seenStrings.contains(str)) {
+                strings.add(str);
+                seenStrings.add(str);
             }
         }
         Collections.sort(strings);
