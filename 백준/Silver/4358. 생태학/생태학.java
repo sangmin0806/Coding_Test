@@ -18,10 +18,10 @@ public class Main {
             cnt++;
             map.put(str,map.getOrDefault(str,0)+1);
         }
-        Object[] keys = map.keySet().toArray();
-        Arrays.sort(keys);
+        List<String> list = new ArrayList<>(map.keySet());
+        Collections.sort(list);
 
-        for(Object key: keys){
+        for(Object key: list){
             int count = map.get(key);
             double per =  (count*100.0)/cnt ;
             System.out.printf("%s %.4f\n",key,per);
