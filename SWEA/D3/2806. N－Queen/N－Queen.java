@@ -19,27 +19,21 @@ class Solution
             N = sc.nextInt();
             answer = 0;
             map = new int[N][N];
-            dfs(0,0,0);
-            System.out.println("#" +test_case+" "+answer);
+            dfs(0,0);
+            System.out.println("#"+test_case+" "+answer);
         }
     }
-    public static void dfs(int row, int col,int count){
+    public static void dfs(int row,int count){
 
         if(count==N){
-//            for (int i = 0; i < N; i++) {
-//                for (int j = 0; j < N; j++) {
-//                    System.out.print(map[i][j]+" ");
-//                }
-//                System.out.println();
-//            }
-//            System.out.println();
             answer++;
+            return;
         }
         for (int i = row; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if(check(i,j)){
                     map[i][j] = 1;
-                    dfs(i+1,j,count+1);
+                    dfs(i+1,count+1);
                     map[i][j] = 0;
                 }
             }
