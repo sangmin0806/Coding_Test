@@ -17,15 +17,15 @@ public class Main {
         }
         long[] dp = new long[N+2];
         for (int i = N; i >= 1; i--) {
-            int next = T[i]+i;
+            int next = T[i] + i;
             if(next<=N+1){
-                dp[i] = Math.max(dp[i+1],dp[next]+P[i]);
+                dp[i] = Math.max(dp[i+1],dp[next] + P[i]);
             }
-            else {
+            else{
                 dp[i] = dp[i+1];
             }
         }
-
         System.out.println(dp[1]);
+
     }
 }
