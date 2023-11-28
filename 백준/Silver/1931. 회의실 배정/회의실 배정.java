@@ -19,12 +19,9 @@ public class Main {
         Arrays.sort(arr, new Comparator<int[]>() {
             @Override
             public int compare(int[] x, int[] y) {
-                return Integer.compare(x[0],y[0]);
-            }
-        });
-        Arrays.sort(arr, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] x, int[] y) {
+                if(x[1]==y[1]){
+                    return Integer.compare(x[0],y[0]);
+                }
                 return Integer.compare(x[1],y[1]);
             }
         });
