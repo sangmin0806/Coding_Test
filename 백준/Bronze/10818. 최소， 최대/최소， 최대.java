@@ -9,9 +9,19 @@ public class Main {
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < num; i++) {
             int a = sc.nextInt();
-            if(max<a) max = a;
-            if(min>a) min = a;
+            max = Math.max(a,max);
+            min = Math.min(a,min);
         }
+
+
+//        for (int i = 0; i < num; i++) {
+//            int a = sc.nextInt();
+//            if(max<a) max = a;
+//            if(min>a) min = a;
+//        }
+
+
+
 //        int[] list = new int[num];
 //        for (int i = 0; i < num; i++) {
 //            list[i] = sc.nextInt();
