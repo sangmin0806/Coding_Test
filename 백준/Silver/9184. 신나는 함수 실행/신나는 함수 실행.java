@@ -23,13 +23,13 @@ public class Main {
                 System.out.println("w("+a+", "+b+", "+c+") = "+1);
                 continue;
             }
-            for (int i = 0; i < 21; i++) {
-                for (int j = 0; j < 21; j++) {
-                    for (int k = 0; k < 21; k++) {
-                        dp[i][j][k] = w(i,j,k);
-                    }
-                }
-            }
+//            for (int i = 0; i < 21; i++) {
+//                for (int j = 0; j < 21; j++) {
+//                    for (int k = 0; k < 21; k++) {
+//                        dp[i][j][k] = w(i,j,k);
+//                    }
+//                }
+//            }
             answer = w(a,b,c);
             System.out.println("w("+a+", "+b+", "+c+") = "+answer);
         }
@@ -40,14 +40,14 @@ public class Main {
             return 1;
         }
         if(a>20||b>20||c>20){
-            return w(20,20,20);
+            return dp[20][20][20] = w(20,20,20);
         }
         if(dp[a][b][c]!=0){
             return dp[a][b][c];
         }
         if(a<b&&b<c){
-            return w(a,b,c-1)+w(a,b-1,c-1)-w(a,b-1,c);
+            return dp[a][b][c] = w(a,b,c-1)+w(a,b-1,c-1)-w(a,b-1,c);
         }
-        return w(a-1,b,c)+ w(a-1,b-1,c)+w(a-1,b,c-1)-w(a-1,b-1,c-1);
+        return dp[a][b][c] = w(a-1,b,c)+ w(a-1,b-1,c)+w(a-1,b,c-1)-w(a-1,b-1,c-1);
     }
 }
