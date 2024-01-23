@@ -7,6 +7,7 @@ public class Main {
     static int N;
     static int M;
     static int[] parent;
+    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -27,6 +28,7 @@ public class Main {
                 find(a,b);
             }
         }
+        System.out.println(sb);
     }
     public static int getParent(int a){
         if(parent[a]==a) return parent[a];
@@ -46,7 +48,7 @@ public class Main {
     public static void find(int a, int b){
         a = getParent(a);
         b = getParent(b);
-        if(a==b) System.out.println("YES");
-        else System.out.println("NO");
+        if(a==b) sb.append("YES").append("\n");
+        else sb.append("NO").append("\n");
     }
 }
